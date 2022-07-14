@@ -33,7 +33,12 @@ export default Home;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [],
+    paths: [{
+      params: {
+        site: "nextjs-ondemand-caching-bug.kairosdxp.com",
+        slug: ["/"]
+      }
+    }],
     fallback: "blocking",
   };
 };
