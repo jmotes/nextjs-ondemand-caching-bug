@@ -9,9 +9,7 @@ const Page: NextPage<PageProps> = ({ path, revalidateTime }) => {
     <Layout>
       <p className={styles.description}>
         Revalidated Time{" "}
-        <code className={styles.code}>
-          {new Date(revalidateTime).toLocaleString()}
-        </code>
+        <code className={styles.code}>{revalidateTime}</code>
         <br />
         <RevalidateLink path={path} />
       </p>
@@ -34,7 +32,7 @@ export const getStaticProps: GetStaticProps<PageProps, RequestParams> = async ({
   return {
     props: {
       path: params ? `/_sites/${params.site}/${params.slug}` : "",
-      revalidateTime: Date.now(),
+      revalidateTime: new Date().toLocaleString(),
     },
     revalidate: 86400, // 24 hours
   };
